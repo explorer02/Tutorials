@@ -1,3 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <tab-panel>
+        <div data-tabname="one">Tab one</div>
+        <div data-tabname="two">Tab two</div>
+        <div data-tabname="three">Tab three</div>
+        <div data-tabname="four">Tab four</div>
+        <div data-tabname="five">Tab five</div>
+        <div data-tabname="six">Tab six</div>
+    </tab-panel>
+    <script>
+        function asTabs(node) {
+            btns = []
+            divs = []
+            Array.from(node.childNodes).forEach(cn => {
+                if (cn.nodeType == Node.TEXT_NODE)
+                    return;
+                btn = document.createElement('button');
+                btn.appendChild(document.createTextNode(cn.getAttribute('data-tabname')))
+                btns.push(btn)
+                cn.style.display = 'none'
+                divs.push(cn);
+            })
+            divs[0].style.display = 'block'
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', ev => {
+                    for (let j = 0; j < divs.length; j++) {
+                        divs[j].style.display = 'none'
+                    }
+                    divs[i].style.display = 'block'
+
+                })
+                document.body.insertBefore(btns[i], node)
+            }
+
+
+        }
+        asTabs(document.querySelector("tab-panel"));
+    </script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>🎈</p>
+
+    <script>
+        balloon = document.getElementsByTagName('p')[0]
+        balloon.style.fontSize = "15px"
+        font = 15;
+        window.addEventListener("keydown", changeSize)
+        function changeSize(ev) {
+            ev.preventDefault()
+            if (ev.key == 'ArrowUp') {
+                font = font * 1.1;
+                balloon.style.fontSize = font + "px"
+                if (font > 100) {
+                    balloon.textContent = "💥";
+                    window.removeEventListener("keydown", changeSize)
+                }
+
+            }
+            else if (ev.key == 'ArrowDown') {
+                font = font * 0.9;
+                balloon.style.fontSize = font + "px"
+            }
+            font = balloon.style.fontSize.slice(0, balloon.style.fontSize.length - 2) * 1
+        }
+
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        worker = new Worker("worker.js");
+        worker.postMessage([1, 2])
+
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #progress {
+            border-bottom: 10px solid blue;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <div id="progress"></div>
+    <script>
+
+        document.body.appendChild(document.createTextNode("ABCDEF ".repeat(1000)));
+
+        let bar = document.querySelector("#progress");
+        window.addEventListener("scroll", () => {
+            let max = document.body.scrollHeight - innerHeight;
+            bar.style.width = `${(pageYOffset / max) * 100}%`;
+        });
+
+
+    </script>
+</body>
+
+</html> -->
+
+
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 
