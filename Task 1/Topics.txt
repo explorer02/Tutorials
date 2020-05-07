@@ -1,0 +1,23 @@
+DOM
+1) https://eloquentjavascript.net/13_browser.html
+2) https://eloquentjavascript.net/14_dom.html
+_____________________________________________________
+3) https://eloquentjavascript.net/15_event.html
+4) https://eloquentjavascript.net/16_game.html
+5) https://davidwalsh.name/event-delegate
+-------------------------------------------------
+Flexbox
+6) https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+7) https://egghead.io/courses/flexbox-fundamentals
+8) https://flexboxfroggy.com/
+9) https://egghead.io/courses/css-fundamentals
+-------------------------------------------------
+this
+10) https://egghead.io/courses/understand-javascript-s-this-keyword-in-depth
+-------------------------------------------------
+debug
+11) https://egghead.io/courses/using-chrome-developer-tools-elements
+-------------------------------------------------
+clean code
+12) https://github.com/ryanmcdermott/clean-code-javascript
+-------------------------------------------------

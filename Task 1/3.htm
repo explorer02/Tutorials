@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.addEventListener("click", (ev) => {
+            console.log("Click")
+        })
+        window.addEventListener("dblclick", (ev) => {
+            console.log("Double Click")
+            console.log(event.clientX, event.clientY)
+        })
+    </script>
+</body>
+
+</html>

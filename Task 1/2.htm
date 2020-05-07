@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            min-height: 200px
+        }
+    </style>
+    <img src="img/cat.png" id="cat" style="position: absolute">
+    <img src="img/hat.png" id="hat" style="position: absolute">
+
+    <script>
+        let cat = document.querySelector("#cat");
+        let hat = document.querySelector("#hat");
+        left = 100
+        cat.style.top = (100 + "px");
+        cat.style.left = (left + "px");
+        let angle = Math.PI;
+        let lastTime = null;
+        function animate(time, lastTime) {
+            if (lastTime != null) angle += (time - lastTime) * 0.001;
+            lastTime = time;
+            hat.style.top = (Math.sin(angle) * 50 + 100) + "px";
+            hat.style.left = (Math.cos(angle) * 50 + left) + "px";
+
+            requestAnimationFrame(time => animate(time, lastTime));
+        }
+        requestAnimationFrame(animate);
+
+    </script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Heading with a <span>span</span> element.</h1>
+    <p>A paragraph with <span>one</span>, <span>two</span>
+        spans.</p>
+
+    <script>
+        function find(node, tagname, lis) {
+            if (node == undefined || node == null)
+                return
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                // console.log(node);
+                for (let i = 0; i < node.childNodes.length; i++) {
+                    find(node.childNodes[i], tagname, lis);
+                }
+            }
+            if (node.nodeName.toLowerCase() == tagname) {
+                lis.push(node)
+            }
+        }
+        function byTagName(node, tagName) {
+            lis = []
+            find(node, tagName, lis)
+            return lis
+
+        }
+
+        console.log(byTagName(document.body, "h1").length);
+        // → 1
+        console.log(byTagName(document.body, "span").length);
+        // → 3
+        let para = document.querySelector("p");
+        console.log(byTagName(para, "span").length);
+      // → 2
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Mountains</h1>
+
+    <div id="mountains"></div>
+
+    <script>
+        const MOUNTAINS = [
+            { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+            { name: "Everest", height: 8848, place: "Nepal" },
+            { name: "Mount Fuji", height: 3776, place: "Japan" },
+            { name: "Vaalserberg", height: 323, place: "Netherlands" },
+            { name: "Denali", height: 6168, place: "United States" },
+            { name: "Popocatepetl", height: 5465, place: "Mexico" },
+            { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+        ];
+
+        const table = document.createElement("table");
+        MOUNTAINS.forEach(mnt => {
+            const row = document.createElement("tr")
+            for (prop in mnt) {
+                let c1 = document.createElement("td")
+                let t1 = document.createTextNode(mnt[prop]);
+                c1.appendChild(t1)
+                c1.style.border = "1px solid black"
+
+                row.appendChild(c1)
+            }
+
+            table.append(row)
+        })
+        table.style.border = "2px solid red"
+        document.getElementById("mountains").appendChild(table)
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="width: 100%;height: 100%;">
+    <img src="img/cat.png" style="position: relative">
+    </p>
+    <script>
+        let cat = document.querySelector("img");
+        let angle = Math.PI / 2;
+        function animate(time, lastTime) {
+            if (lastTime != null) {
+                angle += (time - lastTime) * 0.001;
+            }
+            cat.style.top = (Math.sin(angle) * 20 + 50) + "px";
+            cat.style.left = (Math.cos(angle) * 200 + 200) + "px";
+            requestAnimationFrame(newTime => animate(newTime, time));
+        }
+        requestAnimationFrame(animate);
+    </script>
+</body>
+
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><span id="one"></span></p>
+    <p><span id="two"></span></p>
+
+    <script>
+        function time(name, action) {
+            let start = Date.now(); // Current time in milliseconds
+            action();
+            console.log(name, "took", Date.now() - start, "ms");
+        }
+
+        time("naive", () => {
+            let target = document.getElementById("one");
+            while (target.offsetWidth < 2000) {
+                target.appendChild(document.createTextNode("X"));
+            }
+        });
+        // → naive took 32 ms
+
+        time("clever", function () {
+            let target = document.getElementById("two");
+            target.appendChild(document.createTextNode("XXXXXXXXXX"));
+            let total = Math.ceil(2000 / (target.offsetWidth / 10));
+            target.firstChild.nodeValue = "X".repeat(total);
+        });
+      // → clever took 1 ms
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="aaa.png" height="200" width="200" alt="cat" aaa="aaccc">
+    <img src="aaa.png" height="200" width="200" alt="cat">
+    <img src="aaa.png" height="200" width="200" alt="cat">
+    <img src="aaa.png" height="200" width="200" alt="cat">
+    <img src="aaa.png" height="200" width="200" alt="cat">
+    <img src="aaa.png" height="200" width="200" alt="cat">
+
+    <script src="2.js"></script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="1" abs="aaa">Hello WorLD</p>
+    <p>Hello WarLD</p>
+    <p><b>HelloWorLD</b></p>
+    <p>HWorLDello</p>
+    <ul>
+        <li> Hello WorLD</li>
+    </ul>
+
+    <script src="2.js"></script>
+</body>
+
+
+</html> -->
