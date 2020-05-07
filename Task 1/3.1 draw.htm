@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Click to Start and click to stop</h1>
+    <script>
+        arr = []
+        start = false;
+        function dot(x, y) {
+            const el = document.createElement('div')
+            el.className = 'dot'
+            el.style.top = y + "px";
+            el.style.left = x + "px";
+            document.body.appendChild(el)
+            arr.push(el);
+            if (arr.length > 300) {
+                arr[0].parentNode.removeChild(arr[0])
+                arr = arr.slice(1, arr.length)
+                console.log(arr.length)
+            }
+            // console.log(el)
+
+        }
+        document.body.addEventListener("click", ev => {
+            start = 1 - start;
+            console.log(start)
+        })
+        document.body.addEventListener('mousemove', ev => {
+            if (start)
+                dot(ev.pageX, ev.pageY);
+        })
+
+    </script>
+</body>
+
+</html>

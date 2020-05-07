@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,15 +8,51 @@
 </head>
 
 <body>
+    <button id="btn">Click me</button>
+    <p style="width: 100px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. A tempora nostrum, iste aut ad
+        neque itaque nihil
+        reprehenderit nisi iusto nulla molestiae esse sequi perferendis totam quam molestias non doloribus at deleniti
+        consequuntur quidem natus! Sunt, numquam nam reiciendis soluta ad ipsum ut beatae nobis cupiditate. Similique
+        veniam voluptas blanditiis esse excepturi architecto modi pariatur quo ex labore inventore, ipsum aliquam
+        asperiores! Cupiditate nisi architecto ullam totam, ipsam, reprehenderit, ex repellendus ea laudantium in
+        doloremque debitis sit. Aspernatur nam, molestiae eaque magni minus consectetur voluptatum sapiente quaerat
+        distinctio voluptatem autem quis omnis assumenda sit! Recusandae, possimus vero? Porro adipisci ipsam omnis
+        molestiae inventore, voluptate, provident animi corporis maiores sed neque tempore distinctio laboriosam cum
+        officiis voluptas soluta ab doloremque, mollitia nostrum fuga excepturi maxime. Nam quasi officiis unde cumque
+        soluta! Blanditiis, obcaecati. Minima provident fugiat sunt delectus. Cupiditate expedita, distinctio, hic
+        aspernatur harum veniam, facere corrupti architecto quaerat laboriosam fuga debitis voluptate. Tempore iste
+        exercitationem deleniti laudantium, autem est inventore minima ea id deserunt possimus in nam temporibus ad
+        ipsam obcaecati vitae consequuntur voluptatem blanditiis iusto. Placeat fugit beatae minima exercitationem
+        numquam! Minima modi sequi harum, consequatur, voluptatibus nesciunt iusto quaerat quo laborum aliquid deleniti
+        cupiditate accusantium odit? Nulla, odio.</p>
     <script>
-        window.addEventListener("click", (ev) => {
-            console.log("Click")
+        btn = document.getElementById("btn")
+        btn.style.color = "#f0f"
+        btn.addEventListener("click", (ev) => {
+            console.log("One Click")
         })
-        window.addEventListener("dblclick", (ev) => {
+        btn.addEventListener("dblclick", (ev) => {
             console.log("Double Click")
-            console.log(event.clientX, event.clientY)
+        })
+        btn.addEventListener("contextmenu", ev => {
+            console.log('Right clicked before context menu')
+            ev.preventDefault();
+        })
+        window.addEventListener("keydown", ev => {
+            if (ev.key == "Q") {
+                btn.style.color = "#0ff";
+            }
+        })
+        window.addEventListener("keyup", ev => {
+            if (ev.key == "Q") {
+                btn.style.color = "#f0f";
+            }
+        })
+        window.addEventListener("click", ev => {
+            console.log('Client', ev.clientX, ev.clientY)
+            console.log('Page', ev.pageX, ev.pageY)
         })
     </script>
 </body>
 
-</html>
+</html> -->
