@@ -33,7 +33,7 @@
             lastTime = time;
             hat.style.top = (Math.sin(angle) * 200 + topC) + "px";
             hat.style.left = (Math.cos(angle) * 200 + leftC) + "px";
-            for (let q = 0; q <= 100; q++);
+            for (let q = 0; q <= 100000000; q++);
             console.log("Done for loop");
             requestAnimationFrame(time => animate(time, lastTime));
         }
