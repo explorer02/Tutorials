@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let qb = 10;
+    </script>
+
+</head>
+
+<body>
+    <script>
+        // "use strict";
+        let a;
+        document.writeln(qb + "<br>")
+        document.writeln((a == undefined) + "<br>")
+        document.writeln((a == null) + "<br>")
+        a = null;
+        document.writeln((a == undefined) + "<br>")
+        document.writeln((a == null) + "<br>")
+
+        document.writeln(isNaN(1 / 0) + "<br>")
+        document.writeln(isNaN(1 / 0) + "<br>")
+        document.writeln(eval("1+3-2") + "<br>")
+        document.writeln(parseInt("1.233") + "<br>")
+        document.writeln(parseFloat("1.233") + "<br>")
+        document.writeln(Date() + "<br>")
+        document.writeln(Date.now() + "<br>")
+        this.arr = new Array(1, 2, 3, 4);
+        document.writeln(arr + "<br>")
+        document.writeln(String.fromCharCode(97) + "<br>")
+
+        str = new String("ABCDBEBABSBEBBBSBABAAAHAHAAHAH")
+        regex = new RegExp("BA*H")
+        document.writeln(str.match(regex) + "<br>")
+        document.writeln("ABCD".substring(0, 2) + "<br>")
+
+        var s = "test"; // Start with a string value.
+        s.len = 4; // Set a property on it.
+        var t = s.len; // Now query the property.
+        document.writeln(`t: ${t}<br>`)
+        document.writeln(`a: ${a}<br>`)
+
+        var obj = { "ax": 1, "fun": function () { console.log(this) } }
+        obj.fun()
+
+        a = "aaaa"
+        for (var x in obj) {
+            document.writeln(x + " ");
+        }
+        document.writeln("<br> ");
+
+
+        function fun() {
+            try {
+                document.writeln("try<br>")
+                throw "dfgh"
+                return 0;
+            } catch (error) {
+                document.writeln("catch<br>")
+                return 0;
+            } finally {
+                document.writeln("finally<br>")
+                return 1;
+            }
+            return 2;
+        }
+        document.writeln(fun());
+
+        obj2 = inherit(obj)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

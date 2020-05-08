@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            min-height: 200px
+        }
+    </style>
+    <img src="cat.png" id="cat" style="position: relative;">
+    <img src="hat.png" id="hat" height="60px" width="60px" style="position: relative;">
+
+    <script>
+        let cat = document.querySelector("#cat");
+        let hat = document.querySelector("#hat");
+        leftC = 100
+        topC = 100
+        angle = 0;
+        cat.style.top = (topC + 50 + "px");
+        cat.style.left = (leftC + 50 + "px");
+
+        function animate() {
+            angle += 0.001;
+            hat.style.top = (Math.sin(angle) * 200 + topC) + "px";
+            hat.style.left = (Math.cos(angle) * 200 + leftC) + "px";
+        }
+        while (1) {
+            animate()
+        }
+    </script>
+</body>
+
+</html>

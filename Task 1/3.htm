@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,9 +49,9 @@
     </script>
 </body>
 
-</html>
+</html> -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -68,6 +68,9 @@
         balloon.style.fontSize = "15px"
         font = 15;
         window.addEventListener("keydown", changeSize)
+        window.addEventListener('scroll', (ev) => {
+            ev.preventDefault()
+        })
         function changeSize(ev) {
             ev.preventDefault()
             if (ev.key == 'ArrowUp') {
@@ -89,7 +92,7 @@
     </script>
 </body>
 
-</html> -->
+</html>
 
 
 <!-- <!DOCTYPE html>

@@ -1,8 +1,9 @@
 DOM
 1) https://eloquentjavascript.net/13_browser.html
 2) https://eloquentjavascript.net/14_dom.html
-_____________________________________________________
 3) https://eloquentjavascript.net/15_event.html
+_____________________________________________________
+
 4) https://eloquentjavascript.net/16_game.html
 5) https://davidwalsh.name/event-delegate
 -------------------------------------------------

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            min-height: 200px
+        }
+    </style>
+    <img src="cat.png" id="cat" style="position: relative;">
+    <img src="hat.png" id="hat" height="60px" width="60px" style="position: relative;">
+
+    <script>
+        let cat = document.querySelector("#cat");
+        let hat = document.querySelector("#hat");
+        leftC = 150
+        topC = 150
+        cat.style.top = (topC + 50 + "px");
+        cat.style.left = (leftC + 50 + "px");
+        let angle = Math.PI;
+        let lastTime = null;
+
+        function animate(time, lastTime) {
+            if (lastTime != null)
+                angle += (lastTime - time) * 0.001;
+            console.log(lastTime - time)
+            lastTime = time;
+            hat.style.top = (Math.sin(angle) * 200 + topC) + "px";
+            hat.style.left = (Math.cos(angle) * 200 + leftC) + "px";
+            for (let q = 0; q <= 100; q++);
+            console.log("Done for loop");
+            requestAnimationFrame(time => animate(time, lastTime));
+        }
+        requestAnimationFrame(animate);
+
+    </script>
+</body>
+
+</html>
