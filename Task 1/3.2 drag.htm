@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,6 +21,7 @@
     bar.addEventListener('mousedown', ev => {
         last = ev.clientX;
         window.addEventListener('mousemove', move);
+        ev.preventDefault();
     })
     function move(ev) {
         if (ev.buttons == 0) {
@@ -35,9 +36,9 @@
     }
 </script>
 
-</html>
+</html> -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,8 +49,8 @@
 
 <body>
     <h1>Drag and drop the bar to change its width</h1>
-    <div style="padding: 20px;border: 1px solid black;">
-        <div style="width:50px;height: 20px;background-color: orange;"></div>
+    <div style="padding: 15px;border: 1px solid black;width: 90px;">
+        <div style="width:50px;height: 20px;background-color: orange;position: relative;"></div>
     </div>
 </body>
 
@@ -60,6 +61,7 @@
     bar.addEventListener('mousedown', ev => {
         last = ev.clientX;
         window.addEventListener('mousemove', move);
+        ev.preventDefault()
     })
     function move(ev) {
         if (ev.buttons == 0) {
@@ -69,11 +71,10 @@
             dist = ev.clientX - last;
             width = Math.max(10, bar.offsetWidth + dist)
             bar.style.width = width + "px";
-            width = Math.max(30, border.offsetWidth + dist)
-            border.style.width = width + "px"
+            border.style.width = width + 20 + "px"
             last = ev.clientX;
         }
     }
 </script>
 
-</html> -->
+</html>

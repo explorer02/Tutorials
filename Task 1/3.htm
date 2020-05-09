@@ -8,6 +8,34 @@
 </head>
 
 <body>
+    <input type="text" name="blue"> :Name
+    <p id="abc"></p>
+
+    <script>
+        para = document.getElementById('abc');
+        inp = document.getElementsByTagName('input')[0]
+        let id;
+        inp.addEventListener('input', ev => {
+            clearTimeout(id);
+            id = setTimeout(() => {
+                para.textContent = inp.value
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
     <tab-panel>
         <div data-tabname="one">Tab one</div>
         <div data-tabname="two">Tab two</div>
@@ -22,23 +50,22 @@
         function asTabs(node) {
             btns = []
             divs = []
-            Array.from(node.childNodes).forEach(cn => {
-                if (cn.nodeType == Node.TEXT_NODE)
-                    return;
+            Array.from(node.children).forEach(cn => {
+
                 btn = document.createElement('button');
                 btn.appendChild(document.createTextNode(cn.getAttribute('data-tabname')))
                 btns.push(btn)
                 cn.style.display = 'none'
                 divs.push(cn);
             })
-            divs[0].style.display = 'block'
+            let lo = 0;
+            divs[lo].style.display = 'block'
             for (let i = 0; i < btns.length; i++) {
                 btns[i].addEventListener('click', ev => {
-                    for (let j = 0; j < divs.length; j++) {
-                        divs[j].style.display = 'none'
-                    }
-                    divs[i].style.display = 'block'
 
+                    divs[lo].style.display = 'none'
+                    lo = i;
+                    divs[lo].style.display = 'block'
                 })
                 document.body.insertBefore(btns[i], node)
             }
@@ -51,7 +78,7 @@
 
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -92,7 +119,7 @@
     </script>
 </body>
 
-</html>
+</html> -->
 
 
 <!-- <!DOCTYPE html>
