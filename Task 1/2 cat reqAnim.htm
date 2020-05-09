@@ -26,18 +26,27 @@
         let angle = Math.PI;
         let lastTime = null;
 
+        let id;
+
         function animate(time, lastTime) {
             if (lastTime != null)
                 angle += (lastTime - time) * 0.001;
-            console.log(lastTime - time)
+            // console.log(lastTime - time)
             lastTime = time;
             hat.style.top = (Math.sin(angle) * 200 + topC) + "px";
             hat.style.left = (Math.cos(angle) * 200 + leftC) + "px";
-            for (let q = 0; q <= 100; q++);
-            console.log("Done for loop");
-            requestAnimationFrame(time => animate(time, lastTime));
+            // for (let q = 0; q <= 100; q++);
+            // console.log("Done for loop");
+            id = requestAnimationFrame(time => animate(time, lastTime));
         }
-        requestAnimationFrame(animate);
+        id = requestAnimationFrame(animate);
+        window.addEventListener('keydown', (ev) => {
+            // console.log(ev.key);
+            if (ev.ctrlKey && ev.key == 'c') {
+                cancelAnimationFrame(id);
+            }
+        })
+        window.focus();
 
     </script>
 </body>

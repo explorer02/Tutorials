@@ -24,13 +24,24 @@
         cat.style.top = (topC + 50 + "px");
         cat.style.left = (leftC + 50 + "px");
         let angle = Math.PI;
+        let id;
 
         function animate() {
             angle += 0.01;
             hat.style.top = (Math.sin(angle) * 200 + topC) + "px";
             hat.style.left = (Math.cos(angle) * 200 + leftC) + "px";
         }
-        setInterval(animate, 16);
+        id = setInterval(animate, 16);
+
+
+        window.addEventListener('keydown', (ev) => {
+            // console.log(ev.key);
+            if (ev.ctrlKey && ev.key == 'c') {
+                clearTimeout(id);
+            }
+        })
+        window.focus();
+
 
     </script>
 </body>
