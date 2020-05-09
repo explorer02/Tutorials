@@ -1,3 +1,3 @@
 Last Active File
 
-Task 1 -> Cat files
+Task 1 -> 3 *.* files
