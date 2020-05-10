@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+
+        var global = {};
+
+        function deepCopy(src) {
+            dest = []
+            for (let i = 0; i < src.length; i++) {
+                obj = {
+                    _id: src[i].id,
+                    _reading: src[i].reading,
+                    get id() {
+                        return this._id;
+                    },
+                    set id(v) {
+                        var change = (this._id !== v);
+                        this._id = v;
+                        if (change && !global.dom.timerID) {
+                            global.dom.timerID = setTimeout(global.dom.reflectChanges, global.dom.time)
+                        }
+                    },
+                    get reading() {
+                        return this._reading;
+                    },
+                    set reading(v) {
+                        var change = (this._reading !== v);
+                        this._reading = v;
+                        if (change && !global.dom.timerID) {
+                            global.dom.timerID = setTimeout(global.dom.reflectChanges, global.dom.time)
+                        }
+                    },
+                };
+
+                dest.push(obj);
+            }
+            return dest;
+        }
+
+        function StudentDOM(studs) {
+            global.dom = this;
+            this.studs = deepCopy(studs);
+            this.reflectChanges()
+            this.timerID = undefined
+            this.time = 2000
+
+        }
+        function getStudentByID(id) {
+            for (let stud of this.studs) {
+                if (stud.id == id) {
+                    return stud;
+                }
+            }
+            return null;
+        }
+        function appendStudent(stud) {
+            this.studs.push(stud)
+            if (!this.timerID) {
+                console.log(111, this)
+                this.timerID = setTimeout(this.reflectChanges, this.time);
+                console.log(111, this)
+            }
+        }
+        function removeStudent(id) {
+            for (let i = 0; i < this.studs.length; i++) {
+                if (this.studs[i].id == id) {
+                    this.studs.splice(i, 1);
+                    if (!this.timerID) {
+                        this.timerID = setTimeout(this.reflectChanges, this.time);
+                    }
+                    return;
+                }
+            }
+        }
+        function reflectChanges() {
+            console.log(this);
+            console.log(this.timerID)
+            this.timerID = undefined;
+            console.log(this.timerID)
+        }
+
+        StudentDOM.prototype = { getStudentByID, appendStudent, removeStudent, reflectChanges }
+
+        let studs = [
+            { id: 1, reading: true },
+            { id: 2, reading: false },
+            { id: 3, reading: true },
+            { id: 4, reading: false }
+        ]
+
+        dom = new StudentDOM(studs);
+
+        // let stud = { id: 5, name: "MNO" };
+
+
+
+    </script>
+</body>
+
+</html>
