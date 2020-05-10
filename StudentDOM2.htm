@@ -59,7 +59,7 @@
         function appendStudent(stud) {
             this.studs.push(deepCopy(stud))
             if (!this.timerID) {
-                this.timerID = setTimeout(() => { this.reflectChanges() }, this.time);
+                this.timerID = setTimeout(function () { this.reflectChanges() }.bind(this), this.time);
             }
         }
         function removeStudent(id) {
@@ -67,7 +67,7 @@
                 if (this.studs[i].id == id) {
                     this.studs.splice(i, 1);
                     if (!this.timerID) {
-                        this.timerID = setTimeout(() => this.reflectChanges(), this.time);
+                        this.timerID = setTimeout(function () { this.reflectChanges() }.bind(this), this.time);
                     }
                     return;
                 }
@@ -89,7 +89,7 @@
 
         dom = new StudentDOM(studs);
 
-        // let stud = { id: 5, name: "MNO" };
+        let stud = { id: 5, name: "MNO" };
 
 
 
