@@ -1,0 +1,9 @@
+-> delegate events
+-> Reduce using for each
+-> Whatsapp Flexbox
+-> Codecamp 1 -> 41 minutes
+-> Codecamp 2 -> 46 minutes :::Sort ques: 10 min
+-> flex frog
+-> flexbox egghead
+
+

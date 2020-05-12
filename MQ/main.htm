@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div id="d1">
+        <div id="d2">
+
+        </div>
+        <div id="d3">
+
+        </div>
+    </div>
+
+    <script>
+        d2 = document.getElementById('d2')
+        d3 = document.getElementById('d3')
+        d2.addEventListener('click', (ev) => {
+            d2.style.width = "90%"
+            d3.style.width = "10%"
+        })
+    </script>
+</body>
+
+</html>

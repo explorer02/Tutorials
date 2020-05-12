@@ -1,0 +1,128 @@
+/*
+inherit to inherit from parent
+!important to keep that style without considering specificity
+initial to keep initial properties
+*/
+
+.name {
+	color: blue;
+}
+#desc {
+	color: rgb(255, 217, 0);
+}
+[data-type='intro'] {
+	color: hsl(155, 100%, 40%);
+	font-size: xx-large;
+	border: 3px solid;
+	padding: 10px;
+	width: fit-content;
+}
+li {
+	color: chocolate;
+	font-size: 150%;
+	padding: 2em;
+	display: inline;
+}
+.home {
+	color: black !important;
+}
+#li-home {
+	color: darkorchid;
+}
+
+#box {
+	background-color: #0ff;
+	height: 100px;
+	width: 100px;
+	border: 10px solid red;
+	padding: 5px;
+	margin-top: 100px;
+	box-sizing: border-box;
+}
+
+.content {
+	/* background: url(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=100)
+		center;
+	 background-size: cover; 
+	background-repeat: round; */
+	/* background: url(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=100)
+        no-repeat center/cover; */
+	/* background: radial-gradient(
+			crimson,
+			blue,
+			green,
+			yellow,
+			pink,
+			orange,
+			magenta
+		)
+		fixed; */
+	/* background: linear-gradient(red, blue, green, yellow, orange, pink) fixed; */
+	background: repeating-radial-gradient(
+			circle 90px,
+			crimson,
+			blue 10px,
+			green,
+			yellow
+		)
+		fixed;
+}
+
+h1 {
+	opacity: 0.9;
+	transition: 1s;
+	/* visibility: hidden; */
+	/* font-style: italic;
+	font-family: Consolas;
+	text-transform: uppercase;
+	font-weight: 100;
+    letter-spacing: 10px; */
+	font: italic 100 64px Consolas;
+	/* display: none; */
+}
+h1:hover {
+	background-color: black;
+	color: white;
+}
+
+.parent {
+	padding: 20px;
+	border: 10px solid blue;
+}
+.child {
+	padding: 20px;
+	border: 10px solid red;
+	/* position: relative; */
+	top: 20px;
+	left: 5px;
+	/* position: absolute; */
+	position: fixed;
+	/* bottom: 20px; */
+}
+
+li:first-child a {
+	background-color: pink;
+}
+input:focus {
+	outline-color: blue;
+}
+:nth-child(4) a {
+	background-color: yellow;
+}
+:visited {
+	font-size: 300%;
+}
+
+ol {
+	display: flex;
+	justify-content: space-between;
+}
+ol li {
+	padding: 10px;
+	display: block;
+}
+@media (max-width: 700px) {
+	ol {
+		display: block;
+	}
+}

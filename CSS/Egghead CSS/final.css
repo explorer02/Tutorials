@@ -1,0 +1,93 @@
+.logo {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: white;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+}
+.header--ul {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	width: 50%;
+	padding: 0px;
+}
+.header--ul a {
+	color: rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.header--ul li:first-child a {
+	color: rgba(255, 255, 255, 1);
+}
+.bodyContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+#introWrapper {
+	text-align: center;
+	width: 50%;
+}
+#introContainer {
+	width: 70%;
+	padding: 0;
+	margin: auto;
+	text-align: start;
+}
+#introContainer > h5 {
+	font-size: 1rem;
+	padding: 0;
+	margin-bottom: 0;
+	font-weight: 500;
+}
+#introContainer > h1 {
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-top: 0;
+	font-size: 2.5rem;
+	text-align: start;
+}
+#introContainer > p {
+	margin: 8px 0px;
+	font-size: 0.9rem;
+	width: 70%;
+}
+#introContainer > hr {
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 1px;
+	border: none;
+	width: 90%;
+	margin-left: 0;
+}
+#iconContainer {
+	margin: 16px 0px;
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+}
+#iconContainer i {
+	background: inherit;
+	color: #ffffff;
+}
+#myImage {
+	width: 50%;
+}
+#myImage img {
+	width: 100%;
+}
+/* @media (max-width: 900px) {
+	.headerContainer {
+		display: block;
+	}
+	.header--ul {
+		display: block;
+	}
+} */
