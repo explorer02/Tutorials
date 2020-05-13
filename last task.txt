@@ -4,7 +4,6 @@
 -> Codecamp 1 -> 41 minutes
 -> Codecamp 2 -> 46 minutes :::Sort ques: 10 min
 -> Codecamp 3 -> 55 minutes ::: Arity question, New concept
--> flex frog
--> flexbox egghead
+-> flexbox
 
 
