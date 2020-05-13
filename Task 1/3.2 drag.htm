@@ -38,7 +38,7 @@
 
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -72,6 +72,46 @@
             width = Math.max(10, bar.offsetWidth + dist)
             bar.style.width = width + "px";
             border.style.width = width + 20 + "px"
+            last = ev.clientX;
+        }
+    }
+</script>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Drag and drop the bar to change its width</h1>
+    <div style="padding: 10px;border: 1px solid black; display: inline;">
+        <div style="width:50px;height: 15px;background-color: orange;display: inline-block;"></div>
+    </div>
+</body>
+
+<script>
+    border = document.getElementsByTagName("div")[0];
+    bar = document.getElementsByTagName("div")[1];
+    let last;
+    bar.addEventListener('mousedown', ev => {
+        last = ev.clientX;
+        window.addEventListener('mousemove', move);
+        ev.preventDefault()
+    })
+    function move(ev) {
+        if (ev.buttons == 0) {
+            window.removeEventListener('mousemove', move);
+        }
+        else {
+            dist = ev.clientX - last;
+            width = Math.max(10, bar.offsetWidth + dist)
+            bar.style.width = width + "px";
             last = ev.clientX;
         }
     }
