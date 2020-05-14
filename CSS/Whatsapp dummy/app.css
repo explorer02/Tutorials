@@ -1,34 +1,60 @@
-body {
+body,
+html {
 	font-family: sans-serif;
+	padding: 0;
+	margin: 0;
 	background: #002222;
+	width: 100%;
+	height: 100%;
 }
-.container {
+.main {
 	width: 300px;
-	height: fit-content;
-	min-height: 200px;
-	background-color: wheat;
 	margin: 40px auto;
 	display: flex;
 	flex-direction: column;
-	border-top: 50px rgb(00, 85, 84) solid;
-	max-width: 300px;
-	min-width: 250px;
-	padding: 10px;
+	max-height: 600px;
+	height: 80%;
+	min-height: 300px;
 }
-.sent {
+.bar {
+	flex-shrink: 0;
+	flex-grow: 0;
+	width: 100%;
+	flex-basis: 50px;
+}
+.header {
+	width: 100%;
+	background-color: #0000ff;
+}
+.footer {
+	background-color: #ff0000;
+}
+.container {
+	flex-grow: 1;
+	flex-shrink: 1;
+	background-color: wheat;
+	display: flex;
+	flex-direction: column;
+	flex-basis: 80%;
+	padding: 10px;
+	overflow-y: auto;
+}
+.message {
+	flex-shrink: 0;
 	width: 70%;
 	height: 40px;
-	background-color: lightgreen;
-	align-self: flex-end;
 	margin: 5px 10px;
 	border-radius: 10px;
 	max-width: 80%;
 }
+.sent {
+	background-color: lightgreen;
+	align-self: flex-end;
+}
 .received {
-	width: 70%;
-	height: 40px;
 	background-color: white;
-	margin: 5px 0px;
-	border-radius: 10px;
-	max-width: 80%;
+}
+.ScrollStyle {
+	max-height: 150px;
+	overflow-y: scroll;
 }
