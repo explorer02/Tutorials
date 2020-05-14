@@ -5,6 +5,9 @@
 -> Codecamp 2 -> 46 minutes :::Sort ques: 10 min
 -> Codecamp 3 -> 55 minutes ::: Arity question, New concept
 -> flexbox
--> darg bar with inline block
+-> drag bar with inline block
 
 
+----------------------------
+game
+clean code
