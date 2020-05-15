@@ -23,7 +23,6 @@ html {
 	flex-basis: 50px;
 }
 .header {
-	width: 100%;
 	background-color: #0000ff;
 }
 .footer {
@@ -52,7 +51,7 @@ html {
 	align-self: flex-end;
 }
 .received {
-	background-color: white;
+	background-color: rgb(153, 133, 133);
 }
 .ScrollStyle {
 	max-height: 150px;

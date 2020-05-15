@@ -1,0 +1,11 @@
+HTML
+1) Create HTML file of divs
+
+CSS
+2) Create CSS file and style the divs like multiple files on directory, add flex and other properties
+3) Add styles to selected divs, like a blue background 
+
+JavaScript
+4) Add click listener to select one div on click 
+----------------------------
+5) Find rectangle of shift + drag over window
