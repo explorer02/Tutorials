@@ -149,3 +149,55 @@ promise
 Promise.allSettled(arr).then((results) => {
 	console.log(results);
 });
+
+//***************************************Promisify*********************************************************/
+
+function compute(a, b, callback) {
+	callback(null, a + b);
+}
+function promisify(f) {
+	return function (...args) {
+		return new Promise((resolve, reject) => {
+			function callback(err, res) {
+				if (err) reject(err);
+				else resolve(res);
+			}
+			f.call(null, ...args, callback);
+		});
+	};
+}
+
+let calculate = promisify(compute);
+calculate(2, 3)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.error(err);
+	});
+
+//***************************************Promisify with multiple result*********************************************************/
+
+function compute(a, b, callback) {
+	callback(null, a + b, 'A+B', 'SUM', 'ADD');
+}
+function promisify(f) {
+	return function (...args) {
+		return new Promise((resolve, reject) => {
+			function callback(err, ...res) {
+				if (err) reject(err);
+				else resolve(res.length === 1 ? res[0] : res);
+			}
+			f.call(null, ...args, callback);
+		});
+	};
+}
+
+let calculate = promisify(compute);
+calculate(2, 3)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.error(err);
+	});

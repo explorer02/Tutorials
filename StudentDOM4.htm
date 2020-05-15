@@ -67,10 +67,9 @@
                 this.startTimer();
             }
             remove(id) {
-                let prevLength = Object.keys(this.studs).length;
+                let change = this.studs[id];
                 delete this.studs[id]
-                let newLength = Object.keys(this.studs).length
-                if (newLength !== prevLength)
+                if (change)
                     this.startTimer();
             }
             checkStudExist(id) {
