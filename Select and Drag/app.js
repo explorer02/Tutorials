@@ -34,8 +34,9 @@ Array.from(items).forEach((item) => {
 			Array.from(items).forEach((block) => {
 				unselectItem(block);
 			});
+			selectItem(item);
 		}
-		selectItem(item);
+		// else flipSelected(item);
 	});
 });
 
