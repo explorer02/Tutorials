@@ -15,7 +15,7 @@ function generateBlocks(n) {
 		container.appendChild(divMovie);
 	}
 }
-generateBlocks(10);
+generateBlocks(100);
 
 //select item
 function selectItem(item) {
@@ -29,10 +29,12 @@ function unselectItem(item) {
 //adding click listener to all items
 Array.from(items).forEach((item) => {
 	//unselection all items before selecting one
-	item.addEventListener('click', () => {
-		Array.from(items).forEach((block) => {
-			unselectItem(block);
-		});
+	item.addEventListener('click', (ev) => {
+		if (!ev.shiftKey) {
+			Array.from(items).forEach((block) => {
+				unselectItem(block);
+			});
+		}
 		selectItem(item);
 	});
 });
@@ -43,8 +45,8 @@ function mouseDownListener(ev) {
 	// console.log(ev.clientX, ev.clientY);
 	// console.log(ev.shiftKey, ev.ctrlKey, ev.altKey);
 	if (ev.shiftKey) {
-		topC = ev.clientY;
-		left = ev.clientX;
+		topC = ev.clientY + window.pageYOffset;
+		left = ev.clientX + window.pageXOffset;
 		console.log('Top, left -> ', topC, left);
 		window.addEventListener('mousemove', mouseMoveListener);
 		window.addEventListener('mouseup', mouseUpListener);
@@ -61,8 +63,8 @@ function mouseUpListener(ev) {
 function removeMouseEventListener(ev) {
 	window.removeEventListener('mousemove', mouseMoveListener);
 	window.removeEventListener('mouseup', mouseUpListener);
-	bottom = ev.clientY;
-	right = ev.clientX;
+	bottom = ev.clientY + window.pageYOffset;
+	right = ev.clientX + window.pageXOffset;
 	console.log('Bottom, Right -> ', bottom, right);
 	toggleSelection();
 }
@@ -75,23 +77,21 @@ function toggleSelection() {
 	let sb = Math.max(topC, bottom);
 	Array.from(items).forEach((item) => {
 		let rect = item.getBoundingClientRect();
-		let el = rect.x;
-		let er = rect.x + rect.width;
-		let et = rect.y;
-		let eb = rect.y + rect.height;
+		let el = rect.x + window.pageXOffset;
+		let er = el + rect.width;
+		let et = rect.y + window.pageYOffset;
+		let eb = et + rect.height;
 		if (isInsideRectangle({ st, sb, sl, sr }, { et, eb, el, er })) {
 			flipSelected(item);
 		}
 	});
 }
 function isInsideRectangle({ st, sb, sl, sr }, { et, eb, el, er }) {
-	return !(st > et || sl > el || sb < eb || sr < er);
+	return !(et > sb || eb < st || er < sl || sr < el);
 }
 function flipSelected(item) {
 	if (item.classList.contains('selected')) {
 		item.classList.remove('selected');
 	} else item.classList.add('selected');
 }
-//TODO:fix partial selection of elements
 //TODO:add window event listener to unselect all nodes
-//TODO: fix scroll selection
