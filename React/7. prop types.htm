@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+
+    <script crossorigin src="./Core/react.development.js"></script>
+    <script crossorigin src="./Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root');
+
+
+
+        function SayHello({ firstName, lastName }) {
+            return <div> Hello {firstName} {lastName}</div>
+        }
+
+        //crating custom prop validators for string
+
+        // const PropTypes = {
+        //     string(props, propName, componentName) {
+        //         if (typeof props[propName] !== "string") {
+        //             return new Error(`${props}, ${propName}, ${componentName}`)
+        //         }
+        //     }
+        // }
+        // SayHello.propTypes = {
+        //     firstName: PropTypes.string,
+        //     lastName: PropTypes.string
+        // }
+
+        //using lirary prop validator
+        SayHello.propTypes = {
+            //using validators on provided props
+            // firstName: PropTypes.string,
+            // lastName: PropTypes.string
+
+            //making props required
+            firstName: PropTypes.string.isRequired,
+            lastName: PropTypes.string.isRequired
+        }
+        const element = <SayHello firstName={false} />
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+
+</html>

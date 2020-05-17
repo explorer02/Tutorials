@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="./Core/react.development.js"></script>
+    <script crossorigin src="./Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root');
+        const Message = (props) => <div className='message'> {props.children}</div>
+        // const element = (
+        //     <div className='container'>
+        //         <Message>Meooww</Message>
+        //         <Message>Hello World</Message>
+        //         <Message>Goodbye World</Message>
+        //     </div>
+        //     // {Message({ msg: 'Hello World' })}
+        //     // {Message({ msg: 'Goodbye World' })}
+
+        // )
+
+        const element = (
+            <div className='container'>
+                <Message>
+                    Meooww
+                    <Message>Hello World</Message>
+                    <span>Here...</span>
+                    <Message>Goodbye World</Message>
+                </Message>
+            </div>
+            // {Message({ msg: 'Hello World' })}
+            // {Message({ msg: 'Goodbye World' })}
+
+        )
+
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+
+</html>

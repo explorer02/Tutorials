@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="./Core/react.development.js"></script>
+    <script crossorigin src="./Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root');
+        const children = 'Hello world'
+        const className = 'container'
+        //create elements  and set value with {}
+        // const element = <div className={className}><h1>{children} Meooww</h1></div>
+
+        //we can specify children right into attributes
+        // const element = <div className={className} children={children}></div>
+
+        //div can have self closing tag
+        // const element = <div className={className} children={children} />
+
+        //we can use spread operator to specify all properties
+        // const props = { className, children }
+        // const element = <div {...props} />
+
+        //adding moe properties using spread
+        const props = { className, children }
+        const element = <div id="divi" {...props} />
+
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+
+</html>

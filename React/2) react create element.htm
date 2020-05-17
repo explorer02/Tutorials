@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="./Core/react.development.js"></script>
+    <script crossorigin src="./Core/react-dom.development.js"></script>
+    <script>
+        const rootElement = document.getElementById('root');
+        // const element = React.createElement('div', {
+        //     children: 'Hello World',
+        //     className: 'container'
+        // })
+        // const element = React.createElement('div', {
+        //     className: 'container'
+        // }, 'Meooww', ', Catty')
+
+        // const element = React.createElement('div', {
+        //     children: ['Meoowww', ', Cattyy'],
+        //     className: 'container'
+        // })
+
+        const element = React.createElement('div', {
+            children: React.createElement('span', null, 'Hello', ', World'),
+            className: 'container'
+        })
+
+
+        console.log(element);
+        ReactDOM.render(element, rootElement)
+    </script>
+</body>
+
+</html>
