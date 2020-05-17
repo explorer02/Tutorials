@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <style>
+        .box {
+            border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .box--large {
+            height: 200px;
+            width: 200px;
+        }
+
+        .box--medium {
+            height: 150px;
+            width: 150px;
+        }
+
+        .box--small {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+
+    <script crossorigin src="./Core/react.development.js"></script>
+    <script crossorigin src="./Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root');
+
+        function Box({ className = '', size, style, ...rest }) {
+            // using jsx syntax
+
+            // let sizeClass = size ? `box--${size}` : '';
+            // return (<div className={`${sizeClass} ${className} box`}
+            //     style={{ fontStyle: 'italic', ...style }}
+            //     {...rest}
+            // />
+            // )
+
+            //using js syntax
+            let sizeClass = size ? `box--${size}` : '';
+            let props = {
+                className: `${sizeClass} ${className} box`,
+                style: { fontStyle: 'italic', ...style },
+                ...rest
+            }
+            // return (<div {...props} />)
+
+            //using React syntax
+            return React.createElement('div', props)
+
+        }
+
+
+        const element = <div>
+            <Box size='small' style={{
+                backgroundColor: 'lightblue',
+            }}>
+                small lightblue box
+            </Box>
+            <Box size='medium' style={{
+                backgroundColor: 'lightgreen'
+            }}>
+                medium lightgreen box
+            </Box>
+            <Box size='large' style={{
+                backgroundColor: 'orange',
+            }}>
+                large orange box
+            </Box>
+        </div>
+
+        ReactDOM.render(element, rootElement)
+
+    </script>
+
+</body>
+
+</html>
