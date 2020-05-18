@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        // function Welcome(props) {
+        //     return <h1>Hello, {props.name}</h1>;
+        // }
+        // class Welcome2 extends React.Component {
+        //     render() {
+        //         return <h1>Hello, {this.props.name}</h1>;
+        //     }
+        // }
+
+        // // const element = <Welcome name="Meow" />;
+        // // ReactDOM.render(element, document.getElementById('root'));
+        // const element = <Welcome2 name="Meow" />;
+        // ReactDOM.render(element, document.getElementById('root'));
+
+        //-----------------------------------------------------------------
+
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Welcome name="Cat" />
+                    <Welcome name="Dog" />
+                    <Welcome name="Mouse" />
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>
