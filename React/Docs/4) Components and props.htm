@@ -33,24 +33,48 @@
 
         //-----------------------------------------------------------------
 
+        // function Welcome(props) {
+        //     return <h1>Hello, {props.name}</h1>;
+        // }
+
+        // function App() {
+        //     return (
+        //         <div>
+        //             <Welcome name="Cat" />
+        //             <Welcome name="Dog" />
+        //             <Welcome name="Mouse" />
+        //         </div>
+        //     );
+        // }
+
+        // ReactDOM.render(
+        //     <App />,
+        //     document.getElementById('root')
+        // );
+
+
         function Welcome(props) {
             return <h1>Hello, {props.name}</h1>;
         }
 
-        function App() {
+        function App(props) {
             return (
                 <div>
-                    <Welcome name="Cat" />
-                    <Welcome name="Dog" />
-                    <Welcome name="Mouse" />
+                    <Welcome name={props.i} />
+                    <Welcome name={props.i + 1} />
+                    <Welcome name={props.i + 2} />
                 </div>
             );
         }
 
-        ReactDOM.render(
-            <App />,
-            document.getElementById('root')
-        );
+        let i = 0;
+        setInterval(() => {
+
+            ReactDOM.render(
+                <App i={i++} />,
+                document.getElementById('root')
+            );
+        }, 1000);
 
     </script>
 
