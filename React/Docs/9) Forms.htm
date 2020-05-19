@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        // class FormControl extends React.Component {
+        //     constructor(props) {
+        //         super(props)
+        //         this.state = { value: 'qq' };
+        //         this.handleInput = ev => {
+        //             this.setState({ value: ev.target.value })
+        //         }
+        //         this.handleSubmit = ev => {
+        //             console.log(`You have submitted ${this.state.value}`)
+        //             ev.preventDefault()
+        //         }
+        //     }
+        //     render() {
+        //         return (
+        //             <form onSubmit={this.handleSubmit}>
+        //                 <label htmlFor="name">Name: </label>
+        //                 <input type="text" id="name" onChange={this.handleInput} value={this.state.value} />
+        //                 <input type="submit" />
+        //             </form>
+        //         );
+        //     }
+        // }
+
+        class FlavorForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { value: 'coconut' };
+
+                this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+            }
+
+            handleChange(event) {
+                this.setState({ value: event.target.value });
+                console.log(event.target.value)
+            }
+
+            handleSubmit(event) {
+                alert('Your favorite flavor is: ' + this.state.value);
+                event.preventDefault();
+            }
+
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Pick your favorite flavor:
+                      <select multiple={true} values={'mango', 'coconut'} onChange={this.handleChange}>
+                                <option value="Grapefruit">Grapefruit1</option>
+                                <option value="lime">Lime2</option>
+                                <option value="coconut">Coconut</option>
+                                <option value="mango">Mango</option>
+                            </select>
+                        </label>
+                        <input type="file" />
+                        <input type="submit" value="Submit" />
+                    </form>
+
+                );
+            }
+        }
+        ReactDOM.render(<FlavorForm />, rootElement)
+
+    </script>
+
+</body>
+
+</html>

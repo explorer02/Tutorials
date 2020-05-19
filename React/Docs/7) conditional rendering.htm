@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        // function Greeting(props) {
+        //     if (props.isLoggedIn) {
+        //         return (
+        //             <div>You are logged in</div>
+        //         )
+        //     }
+        //     else return (
+        //         <div> You are not logged in </div>
+        //     )
+        // }
+
+
+        // // ReactDOM.render(
+        // //     <Greeting active={true} />,
+        // //     document.getElementById('root')
+        // // );
+
+        // function LoginButton(props) {
+        //     return (
+        //         <button onClick={props.onClick}>
+        //             Login
+        //         </button>
+        //     );
+        // }
+
+        // function LogoutButton(props) {
+        //     return (
+        //         <button onClick={props.onClick}>
+        //             Logout
+        //         </button>
+        //     );
+        // }
+
+        // class LoginControl extends React.Component {
+        //     constructor(props) {
+        //         super(props)
+        //         this.state = { isLoggedIn: false };
+
+        //         this.handleLogin = () => {
+        //             this.setState({ isLoggedIn: true });
+        //         }
+        //         this.handleLogout = () => {
+        //             this.setState({ isLoggedIn: false });
+        //         }
+        //     }
+        //     render() {
+        //         let isLoggedIn = this.state.isLoggedIn;
+        //         let button;
+        //         if (isLoggedIn) {
+        //             button = <LogoutButton onClick={this.handleLogout} />
+        //         }
+        //         else
+        //             button = <LoginButton onClick={this.handleLogin} />
+        //         return (
+        //             <div>
+        //                 {button}
+        //                 <Greeting isLoggedIn={isLoggedIn} />
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        function ShowWarning(props) {
+            return props.isWarning ? <h3>Warning!!</h3> : null
+        }
+        class Page extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { isWarning: true };
+                this.toggleClick = () => {
+                    this.setState({ isWarning: !this.state.isWarning });
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.toggleClick}>{this.state.isWarning ? 'Hide' : 'Show'} </button>
+                        <ShowWarning isWarning={this.state.isWarning} />
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Page />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

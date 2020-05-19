@@ -36,9 +36,11 @@
 
             render() {
                 return (
-                    <button onClick={this.handleClick}>
-                        {this.state.isToggleOn ? 'ON' : 'OFF'}
-                    </button>
+                    <div>
+                        <button onClick={this.handleClick}>
+                            <span>{this.state.isToggleOn ? 'ON' : 'OFF'}</span>
+                        </button>
+                    </div>
                 );
             }
         }

@@ -20,6 +20,7 @@
                 return this._id;
             }
             set id(newId) {
+                //TODO: remove this
                 if (!this.domref.checkStudExist(this.id) || this.domref.checkStudExist(newId))
                     return;
                 let change = (newId !== this._id);
