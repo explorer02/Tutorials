@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        let labs = [{ label: 'First Name', id: 1 }, { label: 'Last Name', id: 2 }]
+        class Form extends React.Component {
+            constructor(props) {
+                super(props)
+                // this.state = {
+                //     firstName:"",
+                //     lastName:"",
+                //     address:""
+                // }
+                this.state = {
+                    first: "",
+                    last: "",
+                    address: ""
+                }
+                this.handleChange = ev => {
+                    switch (ev.target.id) {
+                        case "1":
+                            this.setState({ first: ev.target.value, last: ev.target.value })
+                            // this.first = ev.target.value
+                            break;
+                        case "2":
+                            console.log('changed')
+                            this.setState({ last: ev.target.value })
+                            // this.last = ev.target.value
+                            break;
+                        case "3":
+                            this.setState({ address: ev.target.value })
+                            // this.address = ev.target.value
+                            break;
+                    }
+                    // console.log(this.state.first, this.state.last, this.state.address)
+                }
+            }
+            handleSubmit = (ev) => {
+                console.log('First Name:', this.state.first)
+                console.log('Last Name:', this.state.last)
+                console.log('Address:', this.state.address)
+                ev.preventDefault()
+            }
+            // {
+            //         labs.map((input, i) => {
+            //             console.log(1)
+            //             return (
+            //                 <div key={2 * i}>
+            //                     <label>{input.label}</label>
+            //                     <input type="text" id={input.id} onChange={this.handleChange} />
+            //                 </div>
+            //             )
+            //         })
+            //     }
+
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+
+
+                        <label>First Name:</label>
+                        <input type="text" id="1" onChange={this.handleChange} />
+                        <label>Last Name:</label>
+                        <input type="text" id="2" onChange={this.handleChange} value={this.state.last} />
+
+                        {this.state.first && this.state.last
+                            ? (
+                                <div>
+                                    <label>Address:</label>
+                                    <textarea rows={5} id="3" onChange={this.handleChange} /></div>) : undefined}
+
+
+                        <input type="submit" />
+
+                    </form>
+                )
+            }
+        }
+
+
+        ReactDOM.render(<Form />, rootElement)
+
+    </script>
+
+</body>
+
+</html>
