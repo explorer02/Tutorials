@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TODO List</title>
 </head>
 
 <body>
@@ -26,6 +26,10 @@
             border: 1px solid #f00;
         }
 
+        ul {
+            border: 1px solid #00f;
+        }
+
         li {
             border: 1px solid #000;
             padding: 2px;
@@ -41,25 +45,22 @@
         const rootElement = document.getElementById('root')
 
 
-        class SearchBlock extends React.Component {
+        class NewItemBlock extends React.Component {
             constructor(props) {
                 super(props)
-                this.state = {
-                    value: ''
-                }
+                this.state = { value: '' }
                 this.handleChange = ev => {
                     this.setState({ value: ev.target.value })
-                    console.log(ev.target.value)
                 }
                 this.addItem = (ev) => {
-                    console.log('hello')
-                    this.props.addItem(this.state.value)
+                    if (this.state.value.trim().length)
+                        this.props.addItem(this.state.value)
                 }
             }
             render() {
                 return (
                     <div>
-                        <input type="text" placeholder="kill a cat" onChange={this.handleChange} />
+                        <input type="text" placeholder="kill a cat" onChange={this.handleChange} value={this.state.value} />
                         {' '}
                         <button onClick={this.addItem}>Add to Todo List</button>
                     </div>
@@ -87,6 +88,9 @@
             constructor(props) {
                 super(props)
             }
+            handleClick = (ev) => {
+                this.props.deleteItem(ev.target.id);
+            }
 
             render() {
                 return (
@@ -103,7 +107,7 @@
             constructor(props) {
                 super(props)
                 this.state = {
-                    array: [
+                    todos: [
                         { id: "1a", value: 'Clean Doghouse' },
                         { id: "2b", value: 'Take dog on walk' },
                         { id: "3c", value: 'Grocery Shopping' },
@@ -114,24 +118,30 @@
 
             }
             deleteItem = (id) => {
-                let index = this.props.todos.findIndex(item => item.id === id);
-                this.props.todos.splice(index, 1);
-                this.setState(state => ({ length: state.length - 1 }))
+                let index = this.state.todos.findIndex(item => item.id === id);
+                let filteredTodos = this.state.todos.filter(item => item.id != id)
+                this.setState(state => ({ todos: filteredTodos }))
             }
             addItem = (value) => {
-                this.props.todos.push({ id: value.split()[0], value })
-                this.setState(state => ({ length: state.length + 1 }))
+                this.setState(
+                    state => (
+                        {
+                            todos:
+                                [...state.todos, { id: Math.random().toString(), value }
+                                ]
+                        })
+                    , () => console.log(this.state.todos))
             }
             render() {
                 return (
                     <div>
-                        <SearchBlock additem={this.addItem} />
-                        <List todos={this.props.todos} deleteItem={this.deleteItem} />
+                        <NewItemBlock addItem={this.addItem} />
+                        <List todos={this.state.todos} deleteItem={this.deleteItem} />
                     </div>
                 );
             }
         }
-        ReactDOM.render(<Container/>, rootElement)
+        ReactDOM.render(<Container />, rootElement)
 
     </script>
 
