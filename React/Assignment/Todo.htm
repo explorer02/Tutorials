@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <style>
+        li:hover {
+            background-color: rgba(0, 0, 255, 0.4);
+        }
+
+        div {
+            border: 1px solid #000;
+            padding: 10px;
+            width: fit-content;
+        }
+
+        #root {
+            border: 1px solid #f00;
+        }
+
+        li {
+            border: 1px solid #000;
+            padding: 2px;
+            margin: 4px;
+        }
+    </style>
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+
+        class SearchBlock extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    value: ''
+                }
+                this.handleChange = ev => {
+                    this.setState({ value: ev.target.value })
+                    console.log(ev.target.value)
+                }
+                this.addItem = (ev) => {
+                    console.log('hello')
+                    this.props.addItem(this.state.value)
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" placeholder="kill a cat" onChange={this.handleChange} />
+                        {' '}
+                        <button onClick={this.addItem}>Add to Todo List</button>
+                    </div>
+                );
+            }
+        }
+        class ListItem extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+            render() {
+                return (
+                    <li
+                        onClick={() => {
+                            this.props.deleteItem(this.props.item.id)
+                        }
+                        }
+                        key={this.props.item.id}>
+                        {this.props.item.value}
+                    </li>
+                );
+            }
+        }
+        class List extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+
+            render() {
+                return (
+                    <ul>
+                        {this.props.todos.map(item => {
+                            return <ListItem deleteItem={this.props.deleteItem} item={item} key={item.id} />
+                        })}
+                    </ul>
+                );
+            }
+        }
+
+        class Container extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    array: [
+                        { id: "1a", value: 'Clean Doghouse' },
+                        { id: "2b", value: 'Take dog on walk' },
+                        { id: "3c", value: 'Grocery Shopping' },
+                        { id: "4d", value: 'Cook Dinner' },
+                        { id: "5e", value: 'Eat Dinner' },
+                    ]
+                }
+
+            }
+            deleteItem = (id) => {
+                let index = this.props.todos.findIndex(item => item.id === id);
+                this.props.todos.splice(index, 1);
+                this.setState(state => ({ length: state.length - 1 }))
+            }
+            addItem = (value) => {
+                this.props.todos.push({ id: value.split()[0], value })
+                this.setState(state => ({ length: state.length + 1 }))
+            }
+            render() {
+                return (
+                    <div>
+                        <SearchBlock additem={this.addItem} />
+                        <List todos={this.props.todos} deleteItem={this.deleteItem} />
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<Container/>, rootElement)
+
+    </script>
+
+</body>
+
+</html>
