@@ -34,9 +34,12 @@ html {
 	background-color: wheat;
 	display: flex;
 	flex-direction: column;
-	flex-basis: 80%;
+	height: 80%;
 	padding: 10px;
-	overflow-y: auto;
+	overflow-y: scroll;
+}
+.container > :first-child {
+	margin-top: auto;
 }
 .message {
 	flex-shrink: 0;
@@ -51,7 +54,7 @@ html {
 	align-self: flex-end;
 }
 .received {
-	background-color: rgb(153, 133, 133);
+	background-color: rgb(231, 126, 231);
 }
 .ScrollStyle {
 	max-height: 150px;
