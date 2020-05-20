@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        class Counter extends React.Component {
+            constructor(props) {
+                super(props)
+                console.log('---Constructor---')
+                this.state = { count: 0 }
+                this.increment = this.increment.bind(this)
+            }
+            componentDidMount() {
+                console.log('---Component Did Mount---')
+            }
+            shouldComponentUpdate(nextProps, nextState) {
+                console.log('---Should component update---')
+                console.log(this.props, nextProps, this.state, nextState)
+                return this.state.count < 3 || nextProps.title == "ajay"
+            }
+            increment() {
+                console.log('---Increment---')
+                this.setState({ count: this.state.count + 1 }, () => {
+                    if (this.state.count == 10) {
+                        this.forceUpdate()
+                    }
+                })
+            }
+            getSnapshotBeforeUpdate(prevProps, prevState) {
+                console.log('---Get Snapshot before update---')
+                console.log(prevProps, prevState)
+                return "Hello Snap";
+            }
+            static getDerivedStateFromProps(props, state) {
+                console.log('---Get Derived State From Props---')
+                console.log(props, state)
+                return { name: "AJAY" }
+
+            }
+            componentDidUpdate(prevProps, prevState, snapshot) {
+                // debugger
+                console.log('---Component Did Update---')
+                console.log(prevProps, prevState, this.props, this.state, snapshot)
+
+            }
+            render() {
+                console.log('---Render---')
+                return (
+                    <div>
+                        Count: {' ' + this.state.count}
+                        <br />
+                        <button onClick={this.increment}>Click Me!!</button>
+                    </div>
+                );
+            }
+            componentWillUnmount() {
+                console.log('---Component Will Unmount---')
+
+            }
+        }
+
+        class Controller extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { active: true, title: '' }
+                this.changeState = () => this.setState({ active: !this.state.active })
+                this.newProp = (ev) => this.setState({ title: ev.target.value })
+
+            }
+            componentDidMount() {
+                // setTimeout(() => {
+                //     this.setState({ active: false })
+                // }, 1000);
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.changeState}>Toggle Counter</button>
+                        <br />
+                        <input type="text" onChange={this.newProp} placeholder="Prop Value..." />
+                        <br />
+                        {this.state.active ? <Counter title={this.state.title} /> : null}
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Controller />, rootElement)
+
+    </script>
+
+</body>
+
+</html>
