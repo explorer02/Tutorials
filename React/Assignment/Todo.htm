@@ -49,13 +49,13 @@
             constructor(props) {
                 super(props)
                 this.state = { value: '' }
-                this.handleChange = ev => {
-                    this.setState({ value: ev.target.value })
-                }
-                this.addItem = (ev) => {
-                    if (this.state.value.trim().length)
-                        this.props.addItem(this.state.value)
-                }
+            }
+            handleChange = ev => {
+                this.setState({ value: ev.target.value })
+            }
+            addItem = (ev) => {
+                if (this.state.value.trim().length)
+                    this.props.addItem(this.state.value)
             }
             render() {
                 return (
