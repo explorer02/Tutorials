@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script crossorigin src=".././Core/react.development.js"></script>
+    <script crossorigin src=".././Core/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+        class Para {
+            render() {
+                throw "Hello world";
+                return null;
+            }
+        }
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+            render() {
+                return <Para />;
+            }
+            componentDidCatch(error, message) {
+                console.log('Error: ', error)
+                console.log('Message: ', message)
+            }
+
+        }
+
+        ReactDOM.render(<App />, rootElement)
+
+    </script>
+
+</body>
+
+</html>
