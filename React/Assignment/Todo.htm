@@ -20,6 +20,9 @@
             border: 1px solid #000;
             padding: 10px;
             width: fit-content;
+            margin: auto;
+            margin-top: 10px;
+            padding: 20px;
         }
 
         #root {
@@ -34,6 +37,11 @@
             border: 1px solid #000;
             padding: 2px;
             margin: 4px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.5;
         }
     </style>
 
@@ -54,8 +62,10 @@
                 this.setState({ value: ev.target.value })
             }
             addItem = (ev) => {
-                if (this.state.value.trim().length)
+                if (this.state.value.trim().length) {
                     this.props.addItem(this.state.value)
+                    this.setState({ value: '' })
+                }
             }
             render() {
                 return (
@@ -72,10 +82,13 @@
                 super(props)
             }
             render() {
+                // console.log(this.props.item)
                 return (
-                    <li
-                        onClick={() => {
-                            this.props.deleteItem(this.props.item.id)
+                    <li className={this.props.item.pending ? '' : 'completed'}
+                        onClick={(ev) => {
+                            this.props.item.pending ?
+                                this.props.completeItem(this.props.item.id) :
+                                this.props.markPending(this.props.item.id)
                         }
                         }
                         key={this.props.item.id}>
@@ -93,50 +106,88 @@
             }
 
             render() {
+                console.log(this.props.filter)
                 return (
                     <ul>
                         {this.props.todos.map(item => {
-                            return <ListItem deleteItem={this.props.deleteItem} item={item} key={item.id} />
+                            return (
+                                (
+                                    this.props.filter === 'all' ||
+                                    (this.props.filter === 'pending' && item.pending) ||
+                                    (this.props.filter === 'completed' && !item.pending) ||
+                                    undefined
+                                ) && (
+                                    <ListItem completeItem={this.props.completeItem} item={item} key={item.id} markPending={this.props.markPending} />
+                                )
+                            )
                         })}
                     </ul>
                 );
+            }
+        }
+        class Filter extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+            handleClick = (ev) => {
+                if (ev.target.nodeName === "BUTTON") {
+                    this.props.changeFilter(ev.target.getAttribute('data'));
+                }
+            }
+
+            render() {
+                return (
+                    <div onClick={this.handleClick}>
+                        <button data='all'>All</button>
+                        <button data='pending'>Active</button>
+                        <button data='completed'>Completed</button>
+                    </div>
+                )
             }
         }
 
         class Container extends React.Component {
             constructor(props) {
                 super(props)
-                this.state = {
-                    todos: [
-                        { id: "1a", value: 'Clean Doghouse' },
-                        { id: "2b", value: 'Take dog on walk' },
-                        { id: "3c", value: 'Grocery Shopping' },
-                        { id: "4d", value: 'Cook Dinner' },
-                        { id: "5e", value: 'Eat Dinner' },
-                    ]
-                }
-
+                this.todos = [
+                    { id: "1a", value: 'Clean Doghouse', pending: true },
+                    { id: "2b", value: 'Take dog on walk', pending: true },
+                    { id: "3c", value: 'Grocery Shopping', pending: true },
+                    { id: "4d", value: 'Cook Dinner', pending: true },
+                    { id: "5e", value: 'Eat Dinner', pending: true },
+                ];
+                this.state = { change: false, filter: 'all' };
             }
-            deleteItem = (id) => {
-                let index = this.state.todos.findIndex(item => item.id === id);
-                let filteredTodos = this.state.todos.filter(item => item.id != id)
-                this.setState(state => ({ todos: filteredTodos }))
+            completeItem = (id) => {
+                const item = this.todos.find(item => item.id === id);
+                item.pending = false;
+                this.setState({ change: true });
+            }
+            markPending = (id) => {
+                const item = this.todos.find(item => item.id === id);
+                item.pending = true;
+                this.setState({ change: true });
+            }
+            shouldComponentUpdate(_, nextState) {
+                return nextState.change || (this.state.filter != nextState.filter);
+            }
+            componentDidUpdate() {
+                if (!this.state)
+                    this.setState({ change: false });
             }
             addItem = (value) => {
-                this.setState(
-                    state => (
-                        {
-                            todos:
-                                [...state.todos, { id: Math.random().toString(), value }
-                                ]
-                        })
-                    , () => console.log(this.state.todos))
+                this.todos.push({ id: Math.random().toString(), value, pending: true })
+                this.setState({ change: true })
+            }
+            changeFilter = (newFilter) => {
+                this.setState({ filter: newFilter })
             }
             render() {
                 return (
                     <div>
                         <NewItemBlock addItem={this.addItem} />
-                        <List todos={this.state.todos} deleteItem={this.deleteItem} />
+                        <Filter changeFilter={this.changeFilter} />
+                        <List todos={this.todos} completeItem={this.completeItem} markPending={this.markPending} filter={this.state.filter} />
                     </div>
                 );
             }
