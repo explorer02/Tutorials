@@ -30,6 +30,7 @@
                 console.log('---Component Did Mount---')
             }
             shouldComponentUpdate(nextProps, nextState) {
+                // return this.props!==nextProps || this.state!==nextState
                 console.log('---Should component update---')
                 console.log(this.props, nextProps, this.state, nextState)
                 return this.state.count < 3 || nextProps.title == "ajay"
