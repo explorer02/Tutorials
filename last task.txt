@@ -7,4 +7,5 @@ Context
 Uncontrolled Components
 Reconciliation
 Optimizing Performance
+Typechecking with Proptypes
 Questions **
