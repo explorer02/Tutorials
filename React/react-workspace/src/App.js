@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import RefsDemo from './Components/RefsDemo';
-import FocusInput from './Components/FocusInput';
-import FRParentInput from './Components/FRParentInput';
+import ComponentC from './Components/Context/ComponentC';
+import { UserProvider } from './Components/Context/userContext';
 function App() {
 	return (
 		<div className="App">
-			{/* <RefsDemo/> */}
-			{/* <FocusInput/> */}
-			<FRParentInput />
+			{/* <h1>Hello World</h1> */}
+			<UserProvider value="AJAY">
+				<ComponentC />
+			</UserProvider>
 		</div>
 	);
 }
