@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import TypeCheck from './Components/TypeChecking/TypeCheck';
+import ClassCounterOne from './Components/Hooks - useEffect/ClassCounterOne';
+import HookCounterOne from './Components/Hooks - useEffect/HookCounterOne';
 function App() {
 	return (
 		<div className="App">
-			<TypeCheck />
+			<ClassCounterOne />
+			{/* <HookCounterOne /> */}
 		</div>
 	);
 }
