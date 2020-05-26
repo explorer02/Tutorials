@@ -6,13 +6,13 @@ function HookCounterOne() {
 	useEffect(() => {
 		console.log('Updating title');
 		document.title = `Clicked ${count} times`;
-	});
+	}, [count]);
 	return (
 		<div>
 			<input
 				type="text"
 				value={name}
-				onChange={(ev) => this.setName(ev.target.value)}
+				onChange={(ev) => setName(ev.target.value)}
 			/>
 			<button onClick={() => setCount(count + 1)}>Click {count} times</button>
 		</div>
